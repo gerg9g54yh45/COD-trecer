@@ -36,7 +36,8 @@ const leaderbordMess = {
 }
 
 
-
+const Config = require('./configs.js')
+const config = Config.exports || Config
 const TIMELENGTH = 1000 * 60 * 60 * 24 * 7 // 7 дней - длительность хаба
 const TIMESTART = 1606652395551 // время старта хаба (у всех одинаковое) 1606388007000
 const TIMECHECK = 1000 * 60 * 60 * 2 // 2 часа - как часто проверять команду (историю)
@@ -53,7 +54,7 @@ const request = require('request')
 
 
 
-API.login("gerg9g54yh45@mail.ru", "herhgreGERG45twF34f3")
+API.login(config.apiLogin, config.apiKey)
 .then(logged => {
     console.log(` + Авторизация COD прошла успешно.`)
     // startCheckAllMatches()
@@ -64,7 +65,7 @@ API.login("gerg9g54yh45@mail.ru", "herhgreGERG45twF34f3")
         if ( !res.status ) return showLogErr(res.e, res.err_msg)
 
         // запускаем бота
-        client.login("NTM1MjE1NjY2NzM5ODA2MjE5.XhoeUg.Kem1OGv8_3q2s-Wc1NleekVLNMg")
+        client.login(config.tokenDiscord)
         client.on("ready", () => {
             console.log(` + Бот запущен!`)
 
@@ -108,7 +109,7 @@ function loadDBDate() {
 			url: "https://webmyself.ru/hitbox/hub.php",
 			form: {
 				type: "load",
-				token: "J49Kd3TtrnR09nH74331vDh3LgfGf2N3hmgg43723Fah2Hag4G0lp"
+				token: config.dbToken
 			}
         })
         .then(res => {
@@ -535,7 +536,7 @@ function addTeamDB(team, type) {
 			url: "https://webmyself.ru/hitbox/hub.php",
 			form: {
 				type,
-                token: "J49Kd3TtrnR09nH74331vDh3LgfGf2N3hmgg43723Fah2Hag4G0lp",
+                token: config.dbToken,
                 team
 			}
         })
@@ -877,7 +878,7 @@ function sendTeamUpdates(team) {
             url: "https://webmyself.ru/hitbox/hub.php",
             form: {
                 type: "update",
-                token: "J49Kd3TtrnR09nH74331vDh3LgfGf2N3hmgg43723Fah2Hag4G0lp",
+                token: config.dbToken,
                 team
             }
         })
