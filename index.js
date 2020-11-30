@@ -74,6 +74,7 @@ API.login(config.apiLogin, config.apiKey)
                 if ( !res.status ) return showLogErr(res.e, res.err_msg)
 
                 client.user.setActivity('HUB', { type: 'WATCHING' })
+                client.user.setStatus('idle')
                 client.on("message", startListenMess) // запускаем прослушку сообщений
                 // startCheckAllMatches()
             })
