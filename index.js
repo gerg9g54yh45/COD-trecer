@@ -39,8 +39,9 @@ const leaderbordMess = {
 const Config = require('./configs.js')
 const config = Config.exports || Config
 const TIMELENGTH = 1000 * 60 * 60 * 24 * 7 // 7 дней - длительность хаба
-const TIMESTART = 1606652395551 // время старта хаба (у всех одинаковое) 1606388007000
-const TIMECHECK = 1000 * 60 * 60 * 2 // 2 часа - как часто проверять команду (историю)
+const TIMESTART = 1606725139705 // время старта хаба (у всех одинаковое) 1606388007000
+// const TIMECHECK = 1000 * 60 * 60 * 2 // 2 часа - как часто проверять команду (историю)
+const TIMECHECK = 1000 * 60 * 30
 const API = require('call-of-duty-api')({ ratelimit: { maxRequests: 2, perMilliseconds: 20000, maxRPS: 2 } });
 const MWcombatwz = wrapperLimiter(API.MWcombatwz.bind(API), 20000)
 const MWFullMatchInfowz = wrapperLimiter(API.MWFullMatchInfowz.bind(API), 20000)
@@ -1104,3 +1105,8 @@ function wrapperLimiter(func, time=1000) {
     }
 }
 
+
+
+
+setInterval(hubLeaderbordUpdate, 1000 * 60 * 5) // каждые 5 минут обновление лидерборда матчей
+setInterval(startCheckAllMatches, 1000 * 60 * 30) // каждые 30 минут чекаем стату всех матчей
