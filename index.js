@@ -1109,4 +1109,4 @@ function wrapperLimiter(func, time=1000) {
 
 
 setInterval(hubLeaderbordUpdate, 1000 * 60 * 5) // каждые 5 минут обновление лидерборда матчей
-setInterval(startCheckAllMatches, 1000 * 60 * 60) // каждые 30 минут чекаем стату всех матчей
+setInterval(startCheckAllMatches, 1000 * 60 * 60 * 2) // каждые 30 минут чекаем стату всех матчей
