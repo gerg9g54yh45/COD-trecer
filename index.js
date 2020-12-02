@@ -969,21 +969,21 @@ function hubLeaderbordUpdate() {
 
     // сортируем команды по очкам
     soloFullTeam.sort((teamA, teamB) => {
-        teamA.matches.reduce((sum, match) => {
+        teamB.matches.reduce((sum, match) => {
             return +match.kills + sum
         }, 0) // 0 - начало, может быть бонусом
-        <
-        teamB.matches.reduce((sum, match) => {
+        -
+        teamA.matches.reduce((sum, match) => {
             return +match.kills + sum
         }, 0) // 0 - начало, может быть бонусом
     })
 
     trioFullTeam.sort((teamA, teamB) => {
-        teamA.matches.reduce((sum, match) => {
+        teamB.matches.reduce((sum, match) => {
             return +match.kills + sum
         }, 0) // 0 - начало, может быть бонусом
-        <
-        teamB.matches.reduce((sum, match) => {
+        -
+        teamA.matches.reduce((sum, match) => {
             return +match.kills + sum
         }, 0) // 0 - начало, может быть бонусом
     })
