@@ -954,6 +954,11 @@ function getTeamOnMatch(allPlayers, teamActi) {
 }
 
 
+function getSumKills(team) {
+    return team.matches.reduce((sum, match) => {
+        return +match.kills + sum
+    }, 0)
+}
 
 // обновляет лидерборды соло и трио суммируя все очки
 function hubLeaderbordUpdate() {
@@ -969,23 +974,12 @@ function hubLeaderbordUpdate() {
 
     // сортируем команды по очкам
     soloFullTeam.sort((teamA, teamB) => {
-        teamB.matches.reduce((sum, match) => {
-            return +match.kills + sum
-        }, 0) // 0 - начало, может быть бонусом
-        -
-        teamA.matches.reduce((sum, match) => {
-            return +match.kills + sum
-        }, 0) // 0 - начало, может быть бонусом
+        return getSumKills(teamA) - getSumKills(teamB)
     })
 
     trioFullTeam.sort((teamA, teamB) => {
-        teamB.matches.reduce((sum, match) => {
-            return +match.kills + sum
-        }, 0) // 0 - начало, может быть бонусом
-        -
-        teamA.matches.reduce((sum, match) => {
-            return +match.kills + sum
-        }, 0) // 0 - начало, может быть бонусом
+        console.log(getSumKills(teamA),getSumKills(teamB), getSumKills(teamA) - getSumKills(teamB))
+        return getSumKills(teamA) - getSumKills(teamB)
     })
 
     // формируем текст из массивов
