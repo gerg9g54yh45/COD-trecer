@@ -974,12 +974,11 @@ function hubLeaderbordUpdate() {
 
     // сортируем команды по очкам
     soloFullTeam.sort((teamA, teamB) => {
-        return getSumKills(teamA) - getSumKills(teamB)
+        return getSumKills(teamB) - getSumKills(teamA)
     })
 
     trioFullTeam.sort((teamA, teamB) => {
-        console.log(getSumKills(teamA),getSumKills(teamB), getSumKills(teamA) - getSumKills(teamB))
-        return getSumKills(teamA) - getSumKills(teamB)
+        return getSumKills(teamB) - getSumKills(teamA)
     })
 
     // формируем текст из массивов
