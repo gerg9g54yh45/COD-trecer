@@ -210,6 +210,7 @@ function startListenMess(message) {
 		}
     }
 
+    return;
     if ( channelId == "782631894281879582" ) {
         return executeReg( message, content )
     } else if ( channelId == "782904970932518922" && content.toLowerCase().startsWith("!remove ") ) {
