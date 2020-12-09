@@ -85,7 +85,7 @@ client.guilds.fetch("768390157400670209")
         const roleName = com.teamName
         if ( !roleName ) return;
         guild.roles.cache.each(role => {
-            if ( roleName == role.name ) console.log(roleName)
+            if ( roleName == role.name ) role.delete().then(d => console.log(`Deleted role ${d.name}`)).catch(console.log);
         })
     })
 })
