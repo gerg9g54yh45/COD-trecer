@@ -78,17 +78,6 @@ API.login(config.apiLogin, config.apiKey)
                 client.user.setStatus('idle')
                 client.on("message", startListenMess) // запускаем прослушку сообщений
                 // startCheckAllMatches()
-
-client.guilds.fetch("768390157400670209")
-.then(guild => {
-    dataBase.forEach(com => {
-        const roleName = com.teamName
-        if ( !roleName ) return;
-        guild.roles.cache.each(role => {
-            if ( roleName == role.name ) role.delete().then(d => console.log(`Deleted role ${d.name}`)).catch(console.log);
-        })
-    })
-})
             })
             .catch(e => {
                 showLogErr(e, "Ошибка загрузки сообщения лидерборда")
