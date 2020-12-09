@@ -84,9 +84,8 @@ client.guilds.fetch("768390157400670209")
     dataBase.forEach(com => {
         const roleName = com.teamName
         if ( !roleName ) return;
-        guild.roles.fetch(roleName)
-        .then(role => {
-        	console.log(role.name)
+        guild.roles.cache.each(role => {
+            if ( roleName == role.name ) console.log(roleName)
         })
     })
 })
